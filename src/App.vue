@@ -35,14 +35,19 @@ const RemovableContainer = styled.div`
 `;
 
 const LiquidContainer = styled('div', { index: Number, length: Number })`
+  float: left;
+
   ${props => props.length == 1 && 'width: 100%;'}
-  ${props => props.length > 1 && 'width: 50%;'}
+  ${props => props.length > 1 && 'width: calc(50% - 2px);'}
 
   height: calc(var(--max-width) / 2 - 16px);
-  ${props => props.length !== 1 && props.length % 2 == 1 && props.index > (props.length - 3) && 'height: calc(var(--max-width) / 4 - 8px);'}
+  ${props => props.index % 2 == 0 && 'margin-right: 4px;'}
+  ${props => props.length !== 1 && props.length % 2 == 1 && props.index > (props.length - 3) && 'height: calc(var(--max-width) / 4 - 10px); margin-right: 0;'}
 
-  min-width: 50%;
-  float: left;
+  margin-bottom: 4px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const Picture = styled.div`
